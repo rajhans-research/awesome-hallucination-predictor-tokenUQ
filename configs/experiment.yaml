@@ -1,0 +1,63 @@
+# Experiment Configuration: The Cost-Quality Pareto Frontier of Uncertainty Quantification
+# Reproducible Seed and Hyperparameter Registry
+
+experiment:
+  name: "token_uq_pareto_frontier"
+  version: "1.0.0"
+  random_seed: 42
+  deterministic: true
+
+dataset:
+  name: "potsawee/wiki_bio_gpt3_hallucination"
+  split: "evaluation"
+  cache_dir: "./data/cache"
+  binary_classification_mode: "major_only" # options: "major_only" (0=accurate, 1=major), "all_inaccurate" (0=accurate, 1={minor, major})
+  max_passages: null # null means evaluate all 238 passages
+
+methods:
+  single_pass:
+    - name: "token_mean"
+      enabled: true
+      description: "Arithmetic mean of token negative log probabilities"
+    - name: "token_min"
+      enabled: true
+      description: "Minimum token probability / maximum negative log probability"
+    - name: "token_entropy"
+      enabled: true
+      description: "Predictive entropy estimated from top-5 logprobs"
+    - name: "token_keyword"
+      enabled: true
+      description: "Keyword-filtered token negative log probability (content words only)"
+      filter_stopwords: true
+
+  multi_pass:
+    - name: "selfcheck_ngram"
+      enabled: true
+      sample_counts: [2, 3, 5, 10, 20]
+      ngram_n: 1
+    - name: "selfcheck_nli"
+      enabled: true
+      sample_counts: [2, 5, 10, 20]
+      model_name: "cross-encoder/nli-deberta-v3-small"
+      batch_size: 16
+
+metrics:
+  primary:
+    - "auroc"
+    - "auprc"
+  secondary:
+    - "brier_score"
+    - "fpr95"
+    - "precision_at_recall_80"
+  efficiency:
+    - "latency_ms_per_passage"
+    - "forward_passes_per_sample"
+    - "peak_memory_mb"
+
+output:
+  results_dir: "./results"
+  predictions_dir: "./results/predictions"
+  metrics_dir: "./results/metrics"
+  figures_dir: "./results/figures"
+  tables_dir: "./results/tables"
+  logs_dir: "./results/logs"

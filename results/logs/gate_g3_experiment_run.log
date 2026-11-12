@@ -1,0 +1,19 @@
+[2026-11-13 01:42:21] === GATE G3: FULL EXPERIMENTAL RUN STARTED ===
+[2026-11-13 01:42:21] Random Seed: 42
+[2026-11-13 01:42:21] Loaded dataset: 238 passages, 1908 sentences.
+[2026-11-13 01:42:21] Existing predictions and metrics found. Loading cached results...
+[2026-11-13 01:42:26] 
+[5/5] Generating Deeper Analyses & Publication Figures...
+[2026-11-13 01:42:32] 
+--- Deeper Analysis: High-Certainty Hallucinations (N=191 sentences) ---
+[2026-11-13 01:42:32] Threshold: token_mean <= 0.3919 (Bottom 25% uncertainty of false text)
+[2026-11-13 01:42:32]   token_mean                 detected  71/191 high-certainty errors ( 37.2% recall)
+[2026-11-13 01:42:32]   token_min                  detected  81/191 high-certainty errors ( 42.4% recall)
+[2026-11-13 01:42:32]   token_keyword              detected  69/191 high-certainty errors ( 36.1% recall)
+[2026-11-13 01:42:32]   token_hybrid_a50           detected  75/191 high-certainty errors ( 39.3% recall)
+[2026-11-13 01:42:32]   selfcheck_1gram_max_N20    detected 141/191 high-certainty errors ( 73.8% recall)
+[2026-11-13 01:42:32]   selfcheck_2gram_max_N20    detected 148/191 high-certainty errors ( 77.5% recall)
+[2026-11-13 01:42:32]   selfcheck_tfidf_N20        detected 156/191 high-certainty errors ( 81.7% recall)
+[2026-11-13 01:42:33] Synchronized all figures to paper directory: C:\Users\RAJHANS\.gemini\antigravity\scratch\AITR_Lab02_TokenUQ\paper\figures
+[2026-11-13 01:42:33] 
+=== GATE G3 EXPERIMENTAL RUN COMPLETE in 12.11s ===

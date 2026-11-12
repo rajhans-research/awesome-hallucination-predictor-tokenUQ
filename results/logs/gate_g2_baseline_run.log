@@ -1,0 +1,42 @@
+[2026-11-12 21:00:41] === GATE G2: BASELINE VALIDATION RUN STARTED ===
+[2026-11-12 21:00:41] Random Seed: 42
+[2026-11-12 21:00:41] Dataset Loaded: 238 passages, 1908 sentences | Classes: {'accurate': 516, 'minor_inaccurate': 631, 'major_inaccurate': 761}
+[2026-11-12 21:00:41] Running Single-Pass Token Baselines...
+[2026-11-12 21:00:44]   Method=token_mean       | Total Time=0.0184s | Latency/passage=0.08ms
+[2026-11-12 21:00:44]   Method=token_min        | Total Time=0.0172s | Latency/passage=0.07ms
+[2026-11-12 21:00:44]   Method=token_entropy5   | Total Time=0.8883s | Latency/passage=3.73ms
+[2026-11-12 21:00:44]   Method=token_ppl5       | Total Time=0.8818s | Latency/passage=3.70ms
+[2026-11-12 21:00:44]   Method=token_max_ppl5   | Total Time=0.8815s | Latency/passage=3.70ms
+[2026-11-12 21:00:44] Running Multi-Pass SelfCheck-1gram (N=20) Baseline...
+[2026-11-12 21:00:53]   Method=selfcheck_1gram (N=20) | Total Time=8.8690s | Latency/passage=37.26ms
+[2026-11-12 21:00:53] Saved sentence-level predictions to: C:\Users\RAJHANS\.gemini\antigravity\scratch\AITR_Lab02_TokenUQ\results\predictions\baseline_predictions.csv
+[2026-11-12 21:00:53] 
+--- Protocol: nonfact (N_sents=1908, PosRate=72.96%) ---
+[2026-11-12 21:00:57]   token_mean               | AUROC=71.66% [69.04, 74.48] | AUC-PR=84.01% | Pearson=56.17%
+[2026-11-12 21:01:01]   token_min                | AUROC=73.79% [71.40, 76.36] | AUC-PR=87.63% | Pearson=59.59%
+[2026-11-12 21:01:05]   token_entropy5           | AUROC=67.67% [64.91, 70.57] | AUC-PR=81.23% | Pearson=54.71%
+[2026-11-12 21:01:09]   token_ppl5               | AUROC=68.82% [66.07, 71.74] | AUC-PR=81.61% | Pearson=54.72%
+[2026-11-12 21:01:13]   token_max_ppl5           | AUROC=72.29% [69.97, 74.88] | AUC-PR=86.02% | Pearson=55.06%
+[2026-11-12 21:01:17]   selfcheck_1gram_avg_N20  | AUROC=65.46% [62.48, 68.26] | AUC-PR=81.52% | Pearson=37.81%
+[2026-11-12 21:01:21]   selfcheck_1gram_max_N20  | AUROC=73.35% [70.46, 75.97] | AUC-PR=85.63% | Pearson=64.72%
+[2026-11-12 21:01:21] 
+--- Protocol: nonfact_star (N_sents=1632, PosRate=29.72%) ---
+[2026-11-12 21:01:25]   token_mean               | AUROC=64.36% [61.61, 67.05] | AUC-PR=40.15% | Pearson=56.17%
+[2026-11-12 21:01:29]   token_min                | AUROC=60.38% [57.38, 63.10] | AUC-PR=35.63% | Pearson=59.59%
+[2026-11-12 21:01:33]   token_entropy5           | AUROC=63.79% [60.91, 66.58] | AUC-PR=38.29% | Pearson=54.71%
+[2026-11-12 21:01:37]   token_ppl5               | AUROC=63.94% [61.13, 66.66] | AUC-PR=38.23% | Pearson=54.72%
+[2026-11-12 21:01:41]   token_max_ppl5           | AUROC=58.18% [55.42, 60.97] | AUC-PR=32.18% | Pearson=55.06%
+[2026-11-12 21:01:45]   selfcheck_1gram_avg_N20  | AUROC=63.71% [60.74, 66.34] | AUC-PR=40.33% | Pearson=37.81%
+[2026-11-12 21:01:49]   selfcheck_1gram_max_N20  | AUROC=66.18% [63.46, 68.92] | AUC-PR=41.04% | Pearson=64.72%
+[2026-11-12 21:01:49] 
+--- Protocol: major_only (N_sents=1277, PosRate=59.59%) ---
+[2026-11-12 21:01:53]   token_mean               | AUROC=73.82% [70.72, 76.55] | AUC-PR=76.32% | Pearson=56.17%
+[2026-11-12 21:01:57]   token_min                | AUROC=73.86% [70.83, 76.42] | AUC-PR=79.52% | Pearson=59.59%
+[2026-11-12 21:02:01]   token_entropy5           | AUROC=70.59% [67.42, 73.44] | AUC-PR=72.60% | Pearson=54.71%
+[2026-11-12 21:02:05]   token_ppl5               | AUROC=71.47% [68.29, 74.35] | AUC-PR=72.93% | Pearson=54.72%
+[2026-11-12 21:02:08]   token_max_ppl5           | AUROC=72.01% [69.05, 74.65] | AUC-PR=76.34% | Pearson=55.06%
+[2026-11-12 21:02:12]   selfcheck_1gram_avg_N20  | AUROC=69.62% [66.63, 72.52] | AUC-PR=74.32% | Pearson=37.81%
+[2026-11-12 21:02:16]   selfcheck_1gram_max_N20  | AUROC=76.85% [73.94, 79.43] | AUC-PR=79.40% | Pearson=64.72%
+[2026-11-12 21:02:16] 
+Saved baseline validation metrics to: C:\Users\RAJHANS\.gemini\antigravity\scratch\AITR_Lab02_TokenUQ\results\metrics\baseline_validation_metrics.csv
+[2026-11-12 21:02:16] === GATE G2 VALIDATION COMPLETE in 95.10s ===
